@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace SalesWebMvc.Models
 {
     public class Department
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
         public string name { get; set; }
         public ICollection<Seller> Seller { get; set; } = new List<Seller>();
