@@ -41,7 +41,7 @@ namespace SalesWebMvc.Services
                 _context.Seller.Remove(obj);
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateException)
             {
                 throw new IntegrityException("Can't delete seller because he/she has sales");
             }
@@ -64,9 +64,13 @@ namespace SalesWebMvc.Services
             {
                 throw new DbConcurrencyException(e.Message);
             }
-
-
         }
+
+
+        //public async Task IdAsync(Seller obj)
+        //{
+        //    int result = await _context.Seller.MaxAsync(x => obj.Id > x.Id);
+        //}
     }
 
 
